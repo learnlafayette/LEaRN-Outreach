@@ -116,7 +116,7 @@ http://learn-app-dev.azurewebsites.net/#/pages/livestream
 
 Here is a screenshot of the current version of the dashboard (as of Jan. 29, 2018):
 
-![LEaRN dashboard](http://learnlafayette.com/img/misc/Dashboard-BETA.png)
+![LEaRN dashboard](http://learnlafayette.com/img/misc/Dashboard-BETA2.png)
 
 The *LEaRN Things map* in the upper left panel of the dashboard shows the location of LEaRN air quality Things 
 throughout Lafayette (note that these are currently simulated Things; the LEaRN Things will not begin being deployed
@@ -138,17 +138,17 @@ all of the them may contain data.
 You can use the map view as well as the live and historcal data views to discover Things and Datastreams whose data you
 wish to analyze further using Google Sheets.  You can try it yourself by following these steps:
 
-1. Find the Thing named "City Hall" by clicking through the Things in the map view; this will cause the live and
+1. Find the Thing named "Lafayette Middle" by clicking through the Things in the map view; this will cause the live and
 historical data to load for this Thing.
 2. De-select all datastreams except for the ozone Datastream.
 
-In the following steps we'll use the ozone sensor for the Thing at City Hall as an example.
+In the following steps we'll use the ozone sensor for the Thing at Lafayette Middle as an example.
 
 # Step 5: Find Datastream IDs on Thing-Datastream worksheet
 
-To be able to download Observations from the ozone sensor of the Thing located at "City Hall", we first need to know
-the unique identifier or ID of the Datastream that collects all of the ozone Observations for this Thing.  We'll use
-the "Thing-Datastream" sheet of the "LEaRN API LPSS" Google Sheet to find this ID.
+To be able to download Observations from the ozone sensor of the Thing located at "Lafayette Middle", we first need to 
+know the unique identifier or ID of the Datastream that collects all of the ozone Observations for this Thing.  We'll 
+use the "Thing-Datastream" sheet of the "LEaRN API LPSS" Google Sheet to find this ID.
 
 1. Click on the "Thing-Datastream" tab at the bottom of your copy of the "LEaRN API LPSS" Google Sheet.
 
@@ -157,23 +157,22 @@ the "Thing-Datastream" sheet of the "LEaRN API LPSS" Google Sheet to find this I
 2. From the *View* menu, choose *Freeze* and then *1 row*.  This will ensure that the column headings in the first
 row of the "Thing-Datastream" worksheet remain visible as we scroll through the rows.
 
-3. Search for the following text: "City Hall".  
+3. Search for the following text: "Lafayette Middle".  
 
-There should be 6 rows in the Thing-Datastream worksheet that contain the words "City" and "Hall" (rows 110-115).  Row 
-110 represents the location of the simulated Thing installed at City Hall; column K shows the same coordinates that 
-were displayed for this Thing in the dashboard (except with the longitude listed first, and the latitude listed 
-second).  Row 111 contains all of the fields of the ozone Datastream for the City Hall thing.  You can tell this 
-because the value of column O (named Value Datastreams Name) is "Ground-level Ozone ()" [TODO: UPDATE].  There are many 
-other fields in this Datastream, but for now we're only interested in the ID, which you can find in column P (which is
-named Value Datastreams @iot.id).
+There should be 6 rows in the Thing-Datastream worksheet that contain the words "Lafayette" and "Middle" 
+(rows 218-223).  Row 218 represents the location of the simulated Thing installed at Lafayette Middle; column K shows 
+the same coordinates that were displayed for this Thing in the dashboard (except with the longitude listed first, and 
+the latitude listed second).  Row 219 contains all of the fields of the ozone Datastream for the Lafayette Middle
+Thing.  There are many other fields in this Datastream, but for now we're only interested in the ID, which you can 
+find in column P (which is named Value Datastreams @iot.id).
 
-The ID for the ozone Datastream of the City Hall Thing is 19.  We will use this ID in the next step.
+The ID for the ozone Datastream of the Lafayette Middle Thing is 37.  We will use this ID in the next step.
 
-# Step 6: Download ozone Observation data for the Thing at City Hall
+# Step 6: Download ozone Observation data for the Thing at Lafayette Middle
 
 The worksheet named "Observations_DS_1" contains Observations for the Datastream whose ID is 1.  These Observations 
 were loaded into the Google Sheet a few days ago.  In this section, we'll make a copy of this worksheet and use it to
-load data from the City Hall ozone Datastream (the one with ID 19) we identified above.
+load data from the Lafayette Middle ozone Datastream (the one with ID 37) we identified above.
 
 1. Click on the arrow head on the "Observations_DS_1" sheet, and choose "Duplicate" from the pop-up menu.
 
@@ -181,28 +180,28 @@ load data from the City Hall ozone Datastream (the one with ID 19) we identified
 
 This should result in a new worksheet named "Copy of Observations_DS_1" appearing in your Sheet.
 
-2. Rename "Copy of Observations_DS_1" to "Observations_DS_19".
-3. Edit the Datastream ID from "1" to "19" in the API query listed in the formula bar, then hit Enter.
+2. Rename "Copy of Observations_DS_1" to "Observations_DS_37".
+3. Edit the Datastream ID from "1" to "37" in the API query listed in the formula bar, then hit Enter.
 
-![Observations_DS_19 forumla bar](http://learnlafayette.com/img/misc/FormulaBar.png)
+![Observations_DS_37 forumla bar](http://learnlafayette.com/img/misc/FormulaBar.png)
 
-This will cause the ImportJSON script to load Observations for Datastream 19.  There are several fields/columns 
+This will cause the ImportJSON script to load Observations for Datastream 37.  There are several fields/columns 
 associated with each Observation, but we will focus on "Value Phenomenontime" (column C) and "Value Result" (column D). 
 The field "Value Phenomenontime" is how the ImportJSON script translates the name of the "phenomenonTime" attribute 
 for each Observation (to review, phenomenonTime is the time an Observation was made by a sensor).  Likewise, the field 
 "Value Result" is how ImportJSON refers to the "result" attribute of an Observation (the result is the value read
 from the sensor, in this case ozone in units of parts-per-billion).
 
-In the next step, we'll copy the phenomenonTime and result data for Datastream 19 to a new worksheet so that we can
+In the next step, we'll copy the phenomenonTime and result data for Datastream 37 to a new worksheet so that we can
 make a chart and do other analyses.
 
 # Step 7: Copy ozone data and calculate summary statistics
 
 1. Click the "+" button at the lower left of the "LEaRN API LPSS" Sheet to create a new worksheet; call this 
-worksheet "MyDatastream19_Data"
-2. Copy columns C and D from the "Observations_DS_19" worksheet and paste them into columns A and B of the 
-"MyDatastream19_Data" worksheet.
-3. In the "MyDatastream19_Data" worksheet, change the value of cell A1 from "Value Phenomenontime" to "phenomenonTime",
+worksheet "MyDatastream37_Data"
+2. Copy columns C and D from the "Observations_DS_37" worksheet and paste them into columns A and B of the 
+"MyDatastream37_Data" worksheet.
+3. In the "MyDatastream37_Data" worksheet, change the value of cell A1 from "Value Phenomenontime" to "phenomenonTime",
 and change the value of cell B1 from "Value Result" to "ozone". 
 4. Select the "phenomenonTime" column (column A) and choose *Format > Number > Date time*.  This will tell Sheets that
 this column contains datetime data.
@@ -242,7 +241,7 @@ In the next step, we'll make a chart of ozone data.
 # Step 8: Graph ozone data
 
 Next we'll create a time series graph using the `phenomenonTime` and `ozone` data in columns A and B of the
-"MyDatastream19_Data" sheet.
+"MyDatastream37_Data" sheet.
 
 1. Select columns A and B.  
 2. From the *Insert* menu, choose *Chart*.  The Chart editor will appear on the right side of Sheet.
@@ -251,7 +250,7 @@ Next we'll create a time series graph using the `phenomenonTime` and `ozone` dat
 
 3. Click on *Chart type* then select "Line chart"
 4. Click on the *Customize* tab of the Chart editor.
-5. Expand the *Chart & axis titles* section of the Chart editor and under *Title text* enter "City Hall Ozone" and 
+5. Expand the *Chart & axis titles* section of the Chart editor and under *Title text* enter "Lafayette Middle Ozone" and 
 press Enter.
 6. From *Type* select *Vertical axis title* and under *Title text* enter "Ozone (ppb)" and press Enter.
 7. From *Type* select *Horizontal axis title* and delete the *Title text* and press Enter.
@@ -263,20 +262,20 @@ When you are done, your chart should look something like the graphic below:
 
 ![Final chart](http://learnlafayette.com/img/misc/Graph1_final.png)
 
-Next, let's create a scatter plot comparing ozone data for Datastream 19 with ozone data from Datastream 1.
+Next, let's create a scatter plot comparing ozone data for Datastream 37 with ozone data from Datastream 1.
 
-1. Copy column D from the worksheet "Observations_DS_1" to column C of the "MyDatastream19_Data" worksheet.
-2. On worksheet "MyDatastream19_Data", change the value of cell C1 from "Value Result" to "ozone_ds1".
+1. Copy column D from the worksheet "Observations_DS_1" to column C of the "MyDatastream37_Data" worksheet.
+2. On worksheet "MyDatastream37_Data", change the value of cell C1 from "Value Result" to "ozone_ds1".
 3. Select column C (ozone_ds1) and choose *Format > Number > Number*.  This tells Sheets that this column
 contains numbers.
 4. Select columns B and C.
 5. From the *Insert* menu, choose *Chart*.  The Chart editor will appear on the right side of Sheet.
 6. From Chart type, choose "Scatter chart".
 7. Click on the *Customize* tab of the Chart editor.
-8. Expand the *Chart & axis titles* section of the Chart editor and under *Title text* enter "Ozone: DS19 vs. DS1" and 
+8. Expand the *Chart & axis titles* section of the Chart editor and under *Title text* enter "Ozone: DS37 vs. DS1" and 
 press Enter.
 9. From *Type* select *Vertical axis title* and under *Title text* enter "Ozone DS1 (ppb)" and press Enter.
-10. From *Type* select *Horizontal axis title* and under *Title text* enter "Ozone DS19 (ppb)" and press Enter.
+10. From *Type* select *Horizontal axis title* and under *Title text* enter "Ozone DS37 (ppb)" and press Enter.
 11. Expand the *Series* section of the Chart editor and click the box next to *Trendline*, as well as the box next
 to *Show R^2.
  
@@ -289,6 +288,6 @@ can help to identify possible trends in the data.  In the case of the above grap
 points of the scatter plot perfectly along the diagonal of the graph.  Likewise the R^2 value (also known as the
 coefficient of determination) is equal to 1.  The R^2 value represents the amount of variation in the dependent 
 variable, Ozone DS1 in this case (the dependent variable is usually plotted along the Y-axis) that can be explained 
-using only the independent variable, Ozone DS19 in this case (the independent variable is usually plotted along the 
+using only the independent variable, Ozone DS37 in this case (the independent variable is usually plotted along the 
 X-axis).  The R^2 value was generated based on the prediction of the dependent variable Ozone DS1 using a linear 
-regression between Ozone DS19.
+regression between Ozone DS37.
