@@ -116,7 +116,7 @@ http://learn-app-dev.azurewebsites.net/#/pages/livestream
 
 Here is a screenshot of the current version of the dashboard (as of Jan. 29, 2018):
 
-![LEaRN dashboard](http://learnlafayette.com/img/misc/Dashboard-BETA2.png)
+![LEaRN dashboard](http://learnlafayette.com/img/misc/Dashboard-BETA3.png)
 
 The *LEaRN Things map* in the upper left panel of the dashboard shows the location of LEaRN air quality Things 
 throughout Lafayette (note that these are currently simulated Things; the LEaRN Things will not begin being deployed
