@@ -2,8 +2,8 @@
 
 In this lesson, you will learn how to use Google Sheets to access and view air quality data from the Lafayette 
 Engagement and Research Network (LEaRN) sensor network in Lafayette, LA. You can learn more about the LEaRN project
-[here](https://learnlafayette.com).
-
+[here](https://learnlafayette.com).  Introductory slides with background information on the LEaRN air quality project
+can be found [here](https://learnlafayette.com/misc/LEaRN_LPSS_Workshop_20180203.pdf).
 
 # Step 1: LEaRN Data API Introduction
 
