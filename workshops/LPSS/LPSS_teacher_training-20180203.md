@@ -160,11 +160,11 @@ row of the "Thing-Datastream" worksheet remain visible as we scroll through the 
 3. Search for the following text: "Lafayette Middle".  
 
 There should be 6 rows in the Thing-Datastream worksheet that contain the words "Lafayette" and "Middle" 
-(rows 218-223).  Row 218 represents the location of the simulated Thing installed at Lafayette Middle; column K shows 
+(rows 176-181).  Row 176 represents the location of the simulated Thing installed at Lafayette Middle; column I shows 
 the same coordinates that were displayed for this Thing in the dashboard (except with the longitude listed first, and 
-the latitude listed second).  Row 219 contains all of the fields of the ozone Datastream for the Lafayette Middle
+the latitude listed second).  Row 177 contains all of the fields of the ozone Datastream for the Lafayette Middle
 Thing.  There are many other fields in this Datastream, but for now we're only interested in the ID, which you can 
-find in column P (which is named Value Datastreams @iot.id).
+find in column M (which is named Value Datastreams @iot.id).
 
 The ID for the ozone Datastream of the Lafayette Middle Thing is 37.  We will use this ID in the next step.
 
@@ -186,7 +186,7 @@ This should result in a new worksheet named "Copy of Observations_DS_1" appearin
 ![Observations_DS_37 forumla bar](http://learnlafayette.com/img/misc/FormulaBar.png)
 
 This will cause the ImportJSON script to load Observations for Datastream 37.  There are several fields/columns 
-associated with each Observation, but we will focus on "Value Phenomenontime" (column C) and "Value Result" (column D). 
+associated with each Observation, but we will focus on "Value Phenomenontime" (column B) and "Value Result" (column C). 
 The field "Value Phenomenontime" is how the ImportJSON script translates the name of the "phenomenonTime" attribute 
 for each Observation (to review, phenomenonTime is the time an Observation was made by a sensor).  Likewise, the field 
 "Value Result" is how ImportJSON refers to the "result" attribute of an Observation (the result is the value read
@@ -264,7 +264,7 @@ When you are done, your chart should look something like the graphic below:
 
 Next, let's create a scatter plot comparing ozone data for Datastream 37 with ozone data from Datastream 1.
 
-1. Copy column D from the worksheet "Observations_DS_1" to column C of the "MyDatastream37_Data" worksheet.
+1. Copy column C from the worksheet "Observations_DS_1" to column C of the "MyDatastream37_Data" worksheet.
 2. On worksheet "MyDatastream37_Data", change the value of cell C1 from "Value Result" to "ozone_ds1".
 3. Select column C (ozone_ds1) and choose *Format > Number > Number*.  This tells Sheets that this column
 contains numbers.
