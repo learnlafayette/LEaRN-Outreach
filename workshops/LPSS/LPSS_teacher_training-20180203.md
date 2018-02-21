@@ -154,6 +154,12 @@ use the "Thing-Datastream" sheet of the "LEaRN API LPSS" Google Sheet to find th
 
 ![Thing-Datastream worksheet](http://learnlafayette.com/img/misc/Thing-Datastream.png)
 
+> Note: if the *Thing-Datastream* (or any other worksheet) does not contian the data you expect to see, but instead
+> displays something like '"NAME?" error' on the first line, you can force Sheets to reload the worksheet data by
+> making a small edit to the query in the formula bar, for example changing '$top=3000' to '$top=3001' and pressing
+> the enter key on your keyboard.  This will force Sheets to try to reload the data.  You may have to do this more 
+> than once to resolve the problem, but generally one time is enough to get the data to load as expected.
+
 2. From the *View* menu, choose *Freeze* and then *1 row*.  This will ensure that the column headings in the first
 row of the "Thing-Datastream" worksheet remain visible as we scroll through the rows.
 
